@@ -8,7 +8,7 @@ import cv2
 # specific demo. If you have trouble installing it, try any of the other demos that don't require it instead.
 
 # Open the input movie file
-input_movie = cv2.VideoCapture("hamilton_clip.mp4")
+input_movie = cv2.VideoCapture("source.mp4")
 length = int(input_movie.get(cv2.CAP_PROP_FRAME_COUNT))
 
 # Create an output movie file (make sure resolution/frame rate matches input video!)
@@ -16,15 +16,15 @@ fourcc = cv2.VideoWriter_fourcc(*'XVID')
 output_movie = cv2.VideoWriter('output.avi', fourcc, 29.97, (640, 360))
 
 # Load some sample pictures and learn how to recognize them.
-lmm_image = face_recognition.load_image_file("lin-manuel-miranda.png")
-lmm_face_encoding = face_recognition.face_encodings(lmm_image)[0]
+ch_image = face_recognition.load_image_file("christian.png")
+ch_face_encoding = face_recognition.face_encodings(lmm_image)[0]
 
-al_image = face_recognition.load_image_file("alex-lacamoire.png")
-al_face_encoding = face_recognition.face_encodings(al_image)[0]
+xv_image = face_recognition.load_image_file("xave.png")
+xv_face_encoding = face_recognition.face_encodings(al_image)[0]
 
 known_faces = [
-    lmm_face_encoding,
-    al_face_encoding
+    ch_face_encoding,
+    xv_face_encoding
 ]
 
 # Initialize some variables
@@ -58,9 +58,9 @@ while True:
         # but I kept it simple for the demo
         name = None
         if match[0]:
-            name = "Lin-Manuel Miranda"
+            name = "Christian Sunkudon"
         elif match[1]:
-            name = "Alex Lacamoire"
+            name = "Xave Senduk"
 
         face_names.append(name)
 
